@@ -10,8 +10,7 @@ This repository contains my learning journey in fullstack development. I am curr
 - Database management
 - Web application architecture
 
-## Projects
-- `javascript_150625`: Basic JavaScript practice and learning exercises
+
 
 ## Learning Path
 I am actively working on improving my skills in:
