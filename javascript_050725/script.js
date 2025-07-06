@@ -1,203 +1,158 @@
-// ========================================
-// JAVASCRIPT LEARNING - 70 LINES OF CODE
-// ========================================
+// Creating specific date
+const specificDate = new Date(2024, 0, 15, 10, 30, 0);  //// January 15, 2024, 10:30:00
+console.log("Specific date:", specificDate);
 
-// Variables with var, let, const---------------------------
-var name1 = "harsh";
-console.log(name1);
-var name1 = "aman";  //// var can be redeclared
-console.log(name1);
-
-let name2 = "anjali";
-console.log(name2);
-// let name2 = "dev";  //// error: let cannot be redeclared
-name2 = "adit";      //// let can be reassigned
-console.log(name2);
-
-const name3 = "pranshu";
-console.log(name3);
-// const name3 = "shreyas";  //// error: const cannot be redeclared
-// name3 = "ayush";          //// error: const cannot be reassigned
-
-// Objects and Object Destructuring---------------------------
-const person = {
-    name: "harsh",
-    age: 20,
-    city: "mumbai"
-};
-console.log(person.name);
-console.log(person["age"]);
-
-// Object destructuring
-const { name, age, city } = person;
-console.log(name, age, city);
-
-// Arrays and Array Methods---------------------------
-const fruits = ["apple", "banana", "orange"];
-console.log(fruits[0]);
-
-// Array methods
-fruits.push("grape");  //// add to end
-console.log(fruits);
-
-fruits.pop();          //// remove from end
-console.log(fruits);
-
-fruits.unshift("mango");  //// add to beginning
-console.log(fruits);
-
-fruits.shift();           //// remove from beginning
-console.log(fruits);
-
-// Array methods with functions---------------------------
-const numbers = [1, 2, 3, 4, 5];
-
-// map method - transforms each element
-const doubled = numbers.map(num => num * 2);
-console.log(doubled);  //// [2, 4, 6, 8, 10]
-
-// filter method - keeps elements that pass test
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-console.log(evenNumbers);  //// [2, 4]
-
-// reduce method - combines all elements
-const sum = numbers.reduce((total, num) => total + num, 0);
-console.log(sum);  //// 15
-
-// find method - finds first element that passes test
-const firstEven = numbers.find(num => num % 2 === 0);
-console.log(firstEven);  //// 2
-
-// Functions with different syntax---------------------------
-// Regular function
-function greet(name) {
-    return "Hello " + name;
-}
-console.log(greet("harsh"));
-
-// Arrow function
-const greetArrow = (name) => {
-    return "Hi " + name;
-};
-console.log(greetArrow("aman"));
-
-// Arrow function with implicit return
-const greetShort = name => "Hey " + name;
-console.log(greetShort("anjali"));
-
-// Function with default parameters
-function welcome(name = "guest", age = 18) {
-    return `Welcome ${name}, you are ${age} years old`;
-}
-console.log(welcome("harsh", 20));
-console.log(welcome());  //// uses default values
-
-// Template literals---------------------------
-const firstName = "harsh";
-const lastName = "sharma";
-const fullName = `${firstName} ${lastName}`;
-console.log(fullName);
-
-const message = `Hello ${firstName}!
-You are learning JavaScript.
-Keep it up!`;
-console.log(message);
-
-// Spread operator---------------------------
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-const combined = [...arr1, ...arr2];
-console.log(combined);  //// [1, 2, 3, 4, 5, 6]
-
-const person1 = { name: "harsh", age: 20 };
-const person2 = { ...person1, city: "mumbai" };
-console.log(person2);  //// { name: "harsh", age: 20, city: "mumbai" }
-
-// Rest parameters---------------------------
-function sum(...numbers) {
-    return numbers.reduce((total, num) => total + num, 0);
-}
-console.log(sum(1, 2, 3, 4, 5));  //// 15
-
-// Classes---------------------------
-class Student {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    introduce() {
-        return `Hi, I'm ${this.name} and I'm ${this.age} years old`;
-    }
-}
-
-const student1 = new Student("harsh", 20);
-console.log(student1.introduce());
-
-// setTimeout and setInterval---------------------------
-setTimeout(() => {
-    console.log("This will print after 1 second");
-}, 1000);
-
-let count = 0;
-const interval = setInterval(() => {
-    count++;
-    console.log(`Count: ${count}`);
-    if (count >= 3) {
-        clearInterval(interval);
-        console.log("Interval stopped");
-    }
-}, 1000);
-
-// DOM manipulation---------------------------
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM is loaded!");
-    
-    // Create a simple element
-    const div = document.createElement('div');
-    div.textContent = 'Hello from JavaScript!';
-    div.style.color = 'blue';
-    div.style.fontSize = '20px';
-    document.body.appendChild(div);
-    
-    // Add click event
-    div.addEventListener('click', () => {
-        console.log('Div was clicked!');
-        div.style.backgroundColor = 'yellow';
-    });
-});
-
-// Error handling with try-catch---------------------------
-try {
-    const result = 10 / 0;
-    console.log(result);  //// Infinity
-} catch (error) {
-    console.error('Error:', error);
-}
-
-try {
-    const undefinedVar = undefined;
-    console.log(undefinedVar.property);  //// This will throw error
-} catch (error) {
-    console.error('Caught error:', error.message);
-}
-
-// Local storage---------------------------
-localStorage.setItem('user', 'harsh');
-const user = localStorage.getItem('user');
-console.log('User from storage:', user);
-
-// JSON parsing and stringifying---------------------------
+// JSON Methods---------------------------
 const data = {
     name: "harsh",
-    hobbies: ["coding", "reading", "music"]
+    age: 20,
+    hobbies: ["coding", "reading", "music"],
+    address: {
+        city: "mumbai",
+        country: "india"
+    }
 };
 
+// Convert object to JSON string
 const jsonString = JSON.stringify(data);
-console.log('JSON string:', jsonString);
+console.log("JSON string:", jsonString);
 
+// Convert JSON string back to object
 const parsedData = JSON.parse(jsonString);
-console.log('Parsed data:', parsedData);
+console.log("Parsed data:", parsedData);
 
-console.log("🎉 JavaScript learning completed!");
-console.log("📚 Concepts covered: Variables, Objects, Arrays, Functions, Classes, DOM, Storage");
+// Local Storage---------------------------
+localStorage.setItem("user", "harsh");
+localStorage.setItem("age", "20");
+localStorage.setItem("city", "mumbai");
+
+console.log("User from localStorage:", localStorage.getItem("user"));
+console.log("Age from localStorage:", localStorage.getItem("age"));
+console.log("City from localStorage:", localStorage.getItem("city"));
+
+// Store object in localStorage
+localStorage.setItem("userData", JSON.stringify(data));
+const userData = JSON.parse(localStorage.getItem("userData"));
+console.log("User data from localStorage:", userData);
+
+// Remove item from localStorage
+localStorage.removeItem("age");
+console.log("Age after removal:", localStorage.getItem("age"));  //// null
+
+// Session Storage---------------------------
+sessionStorage.setItem("sessionUser", "harsh");
+sessionStorage.setItem("sessionData", JSON.stringify({ loginTime: new Date() }));
+
+console.log("Session user:", sessionStorage.getItem("sessionUser"));
+console.log("Session data:", JSON.parse(sessionStorage.getItem("sessionData")));
+
+// Cookies---------------------------
+// Set cookie
+document.cookie = "username=harsh; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/";
+document.cookie = "theme=dark; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/";
+
+console.log("All cookies:", document.cookie);
+
+// Function to get cookie by name
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for(let cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split('=');
+        if(cookieName.trim() === name) {
+            return cookieValue;
+        }
+    }
+    return null;
+}
+
+console.log("Username cookie:", getCookie("username"));
+console.log("Theme cookie:", getCookie("theme"));
+
+// Error Handling---------------------------
+console.log("Error handling examples:");
+
+// Try-catch with custom error
+try {
+    const result = 10 / 0;
+    if(!isFinite(result)) {
+        throw new Error("Division by zero results in infinity");
+    }
+    console.log("Result:", result);
+} catch(error) {
+    console.error("Caught error:", error.message);
+}
+
+// Try-catch with JSON parsing
+try {
+    const invalidJSON = "{ name: harsh }";  //// Invalid JSON
+    const parsed = JSON.parse(invalidJSON);
+    console.log("Parsed:", parsed);
+} catch(error) {
+    console.error("JSON parsing error:", error.message);
+}
+
+// Try-catch with undefined property
+try {
+    const obj = {};
+    console.log(obj.nonExistentProperty.someMethod());  //// This will throw error
+} catch(error) {
+    console.error("Property access error:", error.message);
+}
+
+// Global functions for button testing---------------------------
+function testObjects() {
+    console.log("=== Testing Objects ===");
+    console.log("Person object:", person);
+    console.log("Object keys:", Object.keys(person));
+    console.log("Object values:", Object.values(person));
+}
+
+function testArrays() {
+    console.log("=== Testing Arrays ===");
+    console.log("Numbers array:", numbers);
+    console.log("Doubled:", numbers.map(n => n * 2));
+    console.log("Even numbers:", numbers.filter(n => n % 2 === 0));
+    console.log("Sum:", numbers.reduce((sum, n) => sum + n, 0));
+}
+
+function testStrings() {
+    console.log("=== Testing Strings ===");
+    console.log("Original:", text);
+    console.log("Uppercase:", text.toUpperCase());
+    console.log("Trimmed:", text.trim());
+    console.log("Split:", text.split(" "));
+}
+
+function testMath() {
+    console.log("=== Testing Math ===");
+    console.log("Random number:", Math.random());
+    console.log("Max of 1,5,3,9,2:", Math.max(1,5,3,9,2));
+    console.log("Square root of 25:", Math.sqrt(25));
+    console.log("Power 2^8:", Math.pow(2,8));
+}
+
+function testDate() {
+    console.log("=== Testing Date ===");
+    const now = new Date();
+    console.log("Current date:", now.toDateString());
+    console.log("Current time:", now.toTimeString());
+    console.log("ISO format:", now.toISOString());
+}
+
+function testStorage() {
+    console.log("=== Testing Storage ===");
+    console.log("localStorage user:", localStorage.getItem("user"));
+    console.log("sessionStorage user:", sessionStorage.getItem("sessionUser"));
+    console.log("Cookies:", document.cookie);
+}
+
+function testErrorHandling() {
+    console.log("=== Testing Error Handling ===");
+    try {
+        const result = 10 / 0;
+        console.log("Result:", result);
+    } catch(error) {
+        console.error("Error:", error.message);
+    }
+}
+
