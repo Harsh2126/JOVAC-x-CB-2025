@@ -35,10 +35,3 @@ for (const [name, age] of userAges) {
   //         Bob is 30 years old.
 }
 
-// --- Convert Set to Array ---
-const fruitArray = Array.from(fruits);
-console.log(fruitArray); // Output: [ 'apple', 'orange' ]
-
-// --- Convert Map to Object ---
-const userObj = Object.fromEntries(userAges);
-console.log(userObj); // Output: { Alice: 25, Bob: 30 }
